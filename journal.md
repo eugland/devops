@@ -114,3 +114,53 @@ processor | process | Huawei Carrier
 - protecting // especially technoligy and business
 - Employees are responsible for protecting the contents
 - **ISO?IEC 27001 is** is the most sttrivbuted used information security management standard in the world.
+
+
+## September 16 Monday
+### stand up (YODA)
+- yoda continuous and interval recording? 30s or 20 seconds? 
+- processing between deletopns either
+  - queueb ags record, next delete
+  - low with storage then record delete, record again
+- select topic -> add 2 checkboxes, sub selections how many rosbag you want to select
+- kevin: propose keep dashcam recording as it goes, but yoda record when prompted
+- separat scripts to add on, which is easy to commmence
+- issue is mkz_driver still blocking
+
+### standup Evaluation
+- version of kypersim to sync with China
+- Before go into ros bag, traffic light issue is need to be solved
+- omniboard can waity
+- run parallel EXperiment
+- **Kyber-system ARASH has, I get it from him to gain Maintainer anywhere**
+
+### knowledge Transfer from Michael
+- Conda Recipies: construct, private construct, conda, conda.build
+- Environment.yml 
+  - Used in base image
+  - Used on conda
+  - makle file
+  - make dev env | make build
+  - conda recipe create .sh script binary
+- make dist build base image, build repo
+- meta.yml 
+- add new library environmentally
+- conda recepie, metal.yml <- installer
+
+### registry
+
+- green: 2 master, feature
+- yellow:  1 in China
+- pipeline builds images, by this logic, each stage should rely on base image
+- How to configure permission and stuff
+- renew jetty certificate
+- MongoDB: readonly, (1) edit manually, (2) go iunto code to root user push changes
+
+
+### Evaluation basic commands
+```bash 
+$ alias kcl='python -m kyber.evaluation'
+$ kcl experiments run --viz --agent # 2 ids agent and scenario
+$ kcl evaluator run --exp-id=<eventid>
+```
+
