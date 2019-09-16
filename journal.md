@@ -113,7 +113,122 @@ processor | process | Huawei Carrier
 - company has large assets and tangible either wa.
 - protecting // especially technoligy and business
 - Employees are responsible for protecting the contents
-- **ISO?IEC 27001 is** is the most sttrivbuted used information security management standard in the world.
+- **ISO/IEC 27001 is** is the most sttrivbuted used information security management standard in the world.
+
+### work
+- configure ROS Pycharm, python, Anaconda
+- cloned needed repos
+- remaining security notes no copied, and markdwon, and spesh 
+
+## August 26 Monday
+- Performed a reading on naturalistic driving
+
+1. gynab behavioral social interation, conflict resolution
+2. variability: driving styles, experience, etc
+3. complexity, edge cases: perception
+4. control problem: human in the loop mechanical system
+5. The expected/ unexpected limitation, inperfections
+6. reliance on the software: bugs, vunlnerabilities
+7. Recognize when t otake control, adpt when needed
+8. environment conditions
+9. societal / individual tolerances to human-machine
+
+HCAI, MIT-AVT 'naturalistic driving'
+NDS naturalistic driving study
+
+- driver uses their own vehicle
+- drive in the wild
+
+guiding principle: 
+
+- autonomy at all levels: EBS autopilot
+- beyond epochs and manual autonomation: crash and near crash vast remainder
+- multiple study Duration. 
+- observe in owned vehicles vs given
+- multiple analysis modalities: CV, GPS, IMU, CAN  go to http :://hcai.mit.edu/avt
+- MIT-AVT: gather naturlaistic driving data, build on the work and lessons learned of the earlier gen of NDs
+- (SHRPZ): 2nd strategic highway research program
+- Purpose: anotate Specific epochs of driving
+- requiures large temporal window than an epoch of a few seconds, or even minutes. Large scale long tail of naturalistic driving data analysis is required
+- We use DL for Driver state defction, driver body poses estimation, and vehicle state detection
+- Dataset for application of Deep learning
+
+## August 27- 30 
+- Yet Unable to move to newer docker version because likely changes ti tge docker, the support for GPU is likely to be moved out into separate plugins
+- CI/CD pipeline: jobs = basic configuration component, stages = stages keyword then build and deploy
+- Regular package vs namespace package which allows for split of sub pakcages and modules within a single package
+```bash 
+$ make build    
+```
+
+## Semptember 9 - 10 Monday - Tuesday
+- worked on the 2 pipe solution
+
+## Semptember 11 Wednesday
+
+### Work plan with Michael and Danson\
+
+1. Migration 
+  - nexus, reduce nexus for Arash
+  - eval - nexus, perception - nexus
+  - script sync old to new registry (on server)
+  - remind infrastructure - kybe-base \[kyber-server\]
+  - produce required scripts for server setup
+  - run script, 
+  - switch the flip gitlab.new redirect around to new one changes settings variables
+2. Kyber-evaluation
+- put artifacts into new gitlab registry
+
+3. Kubernetes # poke Arash
+- use case: 3 workers, 2 deploys cars ziggy, and car stardusts
+- play rosbag - run entire stack - empty fault detection
+- **ground truth** Image labelling as ground truth
+- Is the msg sending contain anything? 
+- msg suppose there, not htere?
+- msg sent does not exist. 
+- see topic on gitlab
+- compile a script for kubernetes installation
+
+4. Pipeline for perception team? dynodance? data pipe? spark? 
+
+- context: obj detect -> stages -> model 
+- train neural net based on ground truth, test against model, sometimes overfit occur, test set (blind test)
+
+
+## September 12 Thursday
+- perform coverage test
+    ```bash
+    yoda/data/data_source
+    yoda/gui/
+    yoda/registry/
+    yoda/utils
+    ```
+-
+
+
+## September 13 Friday
+- Common in China: kybersim bridge, hmi tools, PNC planning and control 
+- Canada: perception_l5, 
+- both: pnc, fusion, modules
+
+hence we need to
+Diagram:
+```
+Yello:            /-> runnerB -\                 /-> runnerB --> Chinese registry
+Ezone    common ==               ==> evaluation =               
+Green:            \-> runnerA -/                 \-> runnerA --> Canadian registry
+```
+### Kubernetes 
+
+- compute-d kubernetes master
+- uses calicode with kudeam, apply (CNI) Container Network Interface
+- problem: 
+  - works 1st day, 2nd day down
+- proxy -> go to internet -> interanet
+- ip- range: printf -v pod '%s' 10.218.165.51
+- preference
+- destroy node -> run again -> desvelop tools to spin up 
+
 
 
 ## September 16 Monday
@@ -155,7 +270,6 @@ processor | process | Huawei Carrier
 - How to configure permission and stuff
 - renew jetty certificate
 - MongoDB: readonly, (1) edit manually, (2) go iunto code to root user push changes
-
 
 ### Evaluation basic commands
 ```bash 
