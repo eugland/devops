@@ -1,0 +1,15 @@
+# WIP: A code injection method for building docker image
+## Introduction
+In the very early days of software development. The developers build a run an application, host it on host machine and run. As the usage of the application increases, the user would have to find machines with higher capacity. Even on a single machine, software dependencies of application the first instance makes it hard to adjust a different set of dependencies for another application cohosted on the same machine. To address the rididity of resource and lack of isolation, developers gradually switch to container infrastrcutre. At first developers uses Linux Container (LXC) which uses Linux namespace, a kernel feature that partition a set of resource for a set of processes exclusively, and control group (cgroup), a kernerl feature that limits and isolate machine resource usage. While LXC is useful in system level containerization, Docker developed containers for applications based on the same principle. Developers write the code, specifies imperiative procedures in a dockerfile, then use the Dockerfile to build an Image. An image wraps all the necessary dependencies in a bundles. The user can deploy the image anywhere in a container. A container is a running instance that is isolated from any other environment. Extending on the container infrastructure, people are able to set up microservice architecture, and build continous integration pipeline. 
+
+### Image Layer
+When building Docker images, Docker pack each run statement into "layers". Each layer All layers are stored in /var/lib/docker/aufs/diff
+
+
+
+Docker has been a very popular method for building images for container throughout the entire software industry. People are using images to build stuff they like 
+
+
+# Reference
+https://medium.com/@jessgreb01/digging-into-docker-layers-c22f948ed612
+
