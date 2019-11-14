@@ -54,10 +54,10 @@ This could be a docker plugin, but for the sake of this report demonstration (ai
 
 ### Result
 
-comapre python one line application 100 trials inject 1 line
-compare java one line application 100 tirals inject 1 line
-compare complex python app 100 trials inject 5(,or 50 or 500) lines
-compare complex java app 100 trials inject 5-50 (or even500) lines
+- comapre python one line application 100 trials inject 1 line
+- compare java one line application 100 tirals inject 1 line
+- compare complex python app 100 trials inject 5(,or 50 or 500) lines
+- compare complex java app 100 trials inject 5-50 (or even500) lines
 
 ## limitations
 
