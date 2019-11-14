@@ -1,5 +1,9 @@
 # A Code injection Method for Rapid Docker Image Building
 
+**abstract:** xdd
+
+**index-terms:** xdd
+
 ## Introduction
 
 In the very early days of software development. The developers build a run an application, host it on host machine and run. As the usage of the application increases, the user would have to find machines with higher capacity. Even on a single machine, software dependencies of application the first instance makes it hard to adjust a different set of dependencies for another application cohosted on the same machine. To address the rididity of resource and lack of isolation, developers gradually switch to container infrastrcutre. At first developers uses Linux Container (LXC) which uses Linux namespace, a kernel feature that partition a set of resource for a set of processes exclusively, and control group (cgroup), a kernerl feature that limits and isolate machine resource usage. While LXC is useful in system level containerization, Docker developed containers for applications based on the same principle. Developers write the code, specifies imperiative procedures in a dockerfile, then use the Dockerfile to build an Image. An image wraps all the necessary dependencies in a bundles. The user can deploy the image anywhere in a container. A container is a running instance that is isolated from any other environment. Extending on the container infrastructure, people are able to set up microservice architecture, and build continous integration pipeline in which Docker spawn up a new container in which it perform all tests, so the application's code does not break the pipeline's host machine.
@@ -28,6 +32,40 @@ In data science, the term deduplication refers to removing copies of data that a
 
 As the application grows, a Dockerfile grows in complexity and volumes, so do code and tests. Coupled with the complex deployment scenarios, building images in large application becomes extremely time consumming. Sometimes updating a single layer would take more than 10 minutes in a 20GiB application given complex build requirements: conda, make etc. Modern software development process encourages a build after each small incremental change such that a pipeline checks for wether the new feature update works as intended. This becomes problematic when we have a high demand of builds but a low thorougput of build runtime which is  clogged up by long build time. Utilizing the cache feature after each build and layers stored after dedpulication, we propose a methodology that injects newly edited code into existing docker image layer while bypassing the sha256 checksum rule to enale rapid docker image building withing actually building. This reduces o(n) linear runtime required for updating an image where n = size of the layer to a constant O(1) runtime for limited numebr of scenarios.
 
+## Process
+
+### code injection
+
+Talk about the update methodology in detail here
+
+### Checksum bypass
+
+How we byass the checksum
+
+### redeployment
+
+How the new image is not confused with the old image, the 2 stands side by side.
+
+## Performance and Benchmarking
+
+### Setup format
+
+This could be a docker plugin, but for the sake of this report demonstration (aim to finish this in one week, let's do a script. External script would definitely drag down the speed, let's just optimize it to be faster than the current solution )
+
+### Result
+
+comapre python one line application 100 trials inject 1 line
+compare java one line application 100 tirals inject 1 line
+compare complex python app 100 trials inject 5(,or 50 or 500) lines
+compare complex java app 100 trials inject 5-50 (or even500) lines
+
+## limitations
+
+Beacause this uses literal injection, integrity cannot be guaranteed for compiled programming languages as compiling to binary code may behave differently than their original program code. Minor discrepencies can possibily lead to great disaster.
+
+Multi layer injection is possible but not within the scope of this paper. The concept would be performing similar.
+
+## Conclusion and Recomandation
 
 
 # Reference
