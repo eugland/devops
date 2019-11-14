@@ -33,7 +33,15 @@ In data science, the term deduplication refers to removing copies of data that a
 As the application grows, a Dockerfile grows in complexity and volumes, so do code and tests. Coupled with the complex deployment scenarios, building images in large application becomes extremely time consumming. Sometimes updating a single layer would take more than 10 minutes in a 20GiB application given complex build requirements: conda, make etc. Modern software development process encourages a build after each small incremental change such that a pipeline checks for wether the new feature update works as intended. This becomes problematic when we have a high demand of builds but a low thorougput of build runtime which is  clogged up by long build time. Utilizing the cache feature after each build and layers stored after dedpulication, we propose a methodology that injects newly edited code into existing docker image layer while bypassing the sha256 checksum rule to enale rapid docker image building withing actually building. This reduces o(n) linear runtime required for updating an image where n = size of the layer to a constant O(1) runtime for limited numebr of scenarios.
 
 ## Process
+High level languages such as python and Java are written in literal text and run as it is. The code is picked up by an interpretor hosted on the system. This means when an image is built, the application code itself is directly packaged without the need to compile. This makes it possible to compare code line by line inside the image in a manner similar to git. When the developers want to build a new version of an image, we first pull out the old image, go down the layer by layer comparison as one normally would until one such 'changed' layer is determined. This step uses Docker built-in mechanism. Once a changed layer is detected, determine what kind of change this occured: 
+1. A content change 'ADD' or 'COPY'
+2. A configuration change
+If it is (2), fall back to the system mechanism. Otherwise for option 1, decompose the original layer and obtain a collection of files. Diff these files from existing image with the file in current directory. After the change is deteremined, inject the new code into the files in the image, and save changes. At this point the layer.tar's content is changed and so will its checksum. uses file checksum algorithm before injection to get the original sha256 and then after injection get the new sha256 key. Search the original sha256 in image's manifest file which is used to link images' layer then replace it with the newly generated sha256. This way we update both the key and lock sha256 to bypass integrity test which was put in place to ensure no corruption in the layers. 
 
+### Code injection
+During this method
+
+Since these code are 'COPY'ed into the Docker image,xxxx. Given the fact then whennever Docker builds a new image image, it first look at the existing layers and cache, it does 
 ### code injection
 
 Talk about the update methodology in detail here
