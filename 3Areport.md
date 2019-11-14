@@ -34,9 +34,12 @@ As the application grows, a Dockerfile grows in complexity and volumes, so do co
 
 ## Process
 High level languages such as python and Java are written in literal text and run as it is. The code is picked up by an interpretor hosted on the system. This means when an image is built, the application code itself is directly packaged without the need to compile. This makes it possible to compare code line by line inside the image in a manner similar to git. When the developers want to build a new version of an image, we first pull out the old image, go down the layer by layer comparison as one normally would until one such 'changed' layer is determined. This step uses Docker built-in mechanism. Once a changed layer is detected, determine what kind of change this occured: 
+
 1. A content change 'ADD' or 'COPY'
+
 2. A configuration change
-If it is (2), fall back to the system mechanism. Otherwise for option 1, decompose the original layer and obtain a collection of files. Diff these files from existing image with the file in current directory. After the change is deteremined, inject the new code into the files in the image, and save changes. At this point the layer.tar's content is changed and so will its checksum. uses file checksum algorithm before injection to get the original sha256 and then after injection get the new sha256 key. Search the original sha256 in image's manifest file which is used to link images' layer then replace it with the newly generated sha256. This way we update both the key and lock sha256 to bypass integrity test which was put in place to ensure no corruption in the layers. 
+
+If it is case 2, fall back to the system mechanism. Otherwise for case 1, decompose the original layer and obtain a collection of files. Diff these files from existing image with the file in current directory. After the change is deteremined, inject the new code into the files in the image, and save changes. At this point the layer.tar's content is changed and so will its checksum. uses file checksum algorithm before injection to get the original sha256 and then after injection get the new sha256 key. Search the original sha256 in image's manifest file which is used to link images' layer then replace it with the newly generated sha256. This way we update both the key and lock sha256 to bypass integrity test which was put in place to ensure no corruption in the layers. 
 
 ### Code injection
 During this method
