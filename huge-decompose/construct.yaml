@@ -1,0 +1,34 @@
+name: hugeinstall
+version: X
+
+install_in_dependency_order: True
+
+channels:
+  - http://repo.anaconda.com/pkgs/main/
+
+specs:
+  - python
+  - numpy
+  - toolz
+  - matplotlib
+  - dill
+  - pandas
+  - partd
+  - bokeh
+  - tensorflow
+  - pydot
+  - pygpu
+  - pyhive
+  - pylint
+  - pytest
+  - pywget
+  - toml
+  - spyder
+  - sphinx
+  - sh
+  - scapy
+  - redis
+  - qt
+  - pytorch
+  - perl
+  - mysql
