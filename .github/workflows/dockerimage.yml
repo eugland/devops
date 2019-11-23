@@ -1,0 +1,25 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      CI_REGISTRY: docker.pkg.github.com/kamagawa/devops
+    steps:
+    - uses: actions/checkout@v1
+    - name: Log into registry
+      run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
+    - name: build java-tiny
+      run:  |
+        cd java-tiny-decompose && gradle build -p appl/ && imagename=$CI_REGISTRY/java-tiny:latest
+        docker build -t $imagename . && docker push $imagename && cd ..
+    - name: build java-large
+      run: cd java-large-decompose && imagename=$CI_REGISTRY/java-large:latest && docker build -t $imagename . && docker push $imagename && cd ..
+    - name: build python-tiny
+      run: cd python-tiny-decompose && imagename=$CI_REGISTRY/python-tiny:latest && docker build -t $imagename . &&  docker push $imagename && cd ..
+    - name: Push image
+      run: docker images
+
+ 
