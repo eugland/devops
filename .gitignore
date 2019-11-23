@@ -1,7 +1,10 @@
 HELP.md
 .gradle
-/build/
+**/build/**
+**/bin/**
+**/target/**
 !gradle/wrapper/gradle-wrapper.jar
+*.swp
 
 ### STS ###
 .apt_generated
