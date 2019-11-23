@@ -1,2 +1,2 @@
 #!/bin/bash
-time docker build -t test:latest .
+time docker build -t python-large:latest .

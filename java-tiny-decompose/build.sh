@@ -1,5 +1,5 @@
 #!/bin/bash
-time gradle build -p app/
+time gradle build -p appl/
 time docker build -t java-tiny-decompose:latest .
 
 if [ $1 ] && [ $1 = "run" ] 
